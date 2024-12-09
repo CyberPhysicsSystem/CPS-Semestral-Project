@@ -1,0 +1,8 @@
+{
+  "ip": "127.0.0.1",
+  "port": "10101",
+  "encoding": "utf8",
+  "number_endian": "little",
+  "begin": "beginTransaction",
+  "end": "endTransaction"
+}
