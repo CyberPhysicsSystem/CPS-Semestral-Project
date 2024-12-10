@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
+using SenSim = SentenceSimilarity.SentenceSimilarity;
+
 public class BERTLabelMatcher : LabelMatcher
 {
-    public SentenceSimilarity brain;
+    public SenSim brain;
     public IoTDeviceHandler IoTDeviceHandler;
 
     public string[] ToSpecificActionLabel;
