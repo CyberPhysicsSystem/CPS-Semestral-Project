@@ -205,7 +205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7119867490834304547}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.8773484, y: 0.16132677, z: 1.1552811}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -281,6 +281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd69cc0f4270a904bbc45bc1d4fc4ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLeafNode: 1
+  children: []
   actionNames:
   - on
   - off
@@ -325,7 +327,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7119867490834304547}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547445ea906b3114a928db2c24e3a1e6, type: 3}
+  m_Script: {fileID: 11500000, guid: bb3027f9fb04ade46a4f011be50db838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   emmisiveMaterial: {fileID: 2100000, guid: c0c042dde8d341b409affcd5f6036d43, type: 2}

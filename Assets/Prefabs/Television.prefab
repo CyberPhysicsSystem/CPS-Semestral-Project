@@ -212,6 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd69cc0f4270a904bbc45bc1d4fc4ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLeafNode: 1
+  children: []
   actionNames:
   - On
   - Off
@@ -256,7 +258,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1143049166217858550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76b6e3e1f49636640b26ea24c0f46d6e, type: 3}
+  m_Script: {fileID: 11500000, guid: 671bd3ba05813c847afc4862cf936276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   noiseableMaterial: {fileID: 2100000, guid: 5aa1eaa767cb01348b7637e9209f02e2, type: 2}
@@ -272,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59d53db5c9a28c6419bda0a3a5166327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IoTDeviceToLook: {fileID: 0}
+  IoTDeviceToLook: {fileID: 932442554558988839}
   VisualCompoment: {fileID: 9041393997271070342}
 --- !u!1 &9041393997271070342
 GameObject:

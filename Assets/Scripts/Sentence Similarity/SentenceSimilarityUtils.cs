@@ -107,6 +107,10 @@ namespace SentenceSimilarity
             }
 
 
+            /*
+             * Ops is deprecated, and I don't know yet how to update.
+             * Luckily, this method is not being used, so I commented this bit out.
+             * 
             /// <summary>
             /// Perform Mean Pooling
             /// </summary>
@@ -160,6 +164,7 @@ namespace SentenceSimilarity
 
                 return NormalizedEmbeddings;
             }
+            */
 
 
             /// <summary>
@@ -191,7 +196,7 @@ namespace SentenceSimilarity
                 TensorShape shape = new TensorShape(TokenIds.Count, TokenIds[0].Count);
 
                 // Create a new tensor from the array
-                TensorInt TokenIdsTensor = new TensorInt(shape, data);
+                Tensor<int> TokenIdsTensor = new Tensor<int>(shape, data);
 
                 // Flatten the nested list into a one-dimensional array
                 List<int> flattenedData2 = new List<int>();
@@ -205,7 +210,7 @@ namespace SentenceSimilarity
                 TensorShape shape2 = new TensorShape(AttentionMask.Count, AttentionMask[0].Count);
 
                 // Create a new tensor from the array
-                TensorInt AttentionMaskTensor = new TensorInt(shape2, data2);
+                Tensor<int> AttentionMaskTensor = new Tensor<int>(shape2, data2);
 
                 // Flatten the nested list into a one-dimensional array
                 List<int> flattenedData3 = new List<int>();
@@ -219,7 +224,7 @@ namespace SentenceSimilarity
                 TensorShape shape3 = new TensorShape(TokenTypeIds.Count, TokenTypeIds[0].Count);
 
                 // Create a new tensor from the array
-                TensorInt TokenTypeIdsTensor = new TensorInt(shape3, data3);
+                Tensor<int> TokenTypeIdsTensor = new Tensor<int>(shape3, data3);
 
                 Dictionary<string, Tensor> inputTensors = new Dictionary<string, Tensor>() {
                 { "input_ids", TokenIdsTensor },

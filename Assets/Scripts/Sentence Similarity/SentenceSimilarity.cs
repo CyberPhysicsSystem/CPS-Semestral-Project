@@ -1,3 +1,7 @@
+/*
+ * Works only in Sentis 1.3
+ */
+/*
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -126,3 +130,4 @@ namespace SentenceSimilarity
         }
     }
 }
+*/

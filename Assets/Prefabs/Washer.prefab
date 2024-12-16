@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd69cc0f4270a904bbc45bc1d4fc4ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLeafNode: 1
+  children: []
   actionNames:
   - on
   - off
@@ -106,7 +108,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 243049249025791504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f25642ed05ecced44b870b3d3800e9fc, type: 3}
+  m_Script: {fileID: 11500000, guid: fc30c06d5b8f43545ba63d127fbe05f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mAnimator: {fileID: 7456003703144658577}
