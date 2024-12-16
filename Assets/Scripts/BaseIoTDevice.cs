@@ -17,7 +17,7 @@ public interface IIoTDescriptor
     bool GetActiveInteractionState();
 }
 
-public class BaseIoTDevice : MonoBehaviour, IIoTActionProvider, IIoTActionExecutor, IIoTDescriptor
+public class BaseIoTDevice : IoTGraphNode, IIoTActionProvider, IIoTActionExecutor, IIoTDescriptor
 {
     public List<string> actionNames;
     public List<UnityEvent> actionEvents;
