@@ -384,6 +384,10 @@ PrefabInstance:
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3638483654326154267, guid: 337c8d6931011924c9ac8c23a970373e, type: 3}
+      propertyPath: isLeafNode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638483654326154267, guid: 337c8d6931011924c9ac8c23a970373e, type: 3}
       propertyPath: 'actionNames.Array.data[0]'
       value: open
       objectReference: {fileID: 0}
@@ -816,6 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9110c7841a9f46b4183a3091d8f9a90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLeafNode: 0
   children: []
 --- !u!1 &419013110
 GameObject:
@@ -1047,6 +1052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9110c7841a9f46b4183a3091d8f9a90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLeafNode: 0
   children:
   - {fileID: 1975728092}
   - {fileID: 1301379905}
@@ -1481,6 +1487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9110c7841a9f46b4183a3091d8f9a90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLeafNode: 0
   children:
   - {fileID: 1112626267}
 --- !u!1001 &816537852
@@ -2771,6 +2778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9110c7841a9f46b4183a3091d8f9a90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLeafNode: 0
   children: []
 --- !u!1 &1128653535
 GameObject:
@@ -7717,6 +7725,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1190272860}
   - component: {fileID: 1190272861}
+  - component: {fileID: 1190272862}
   m_Layer: 0
   m_Name: RoomManager
   m_TagString: Untagged
@@ -7756,6 +7765,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8d28f7395eb524f9557acdd34c73ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  root: {fileID: 1190272862}
+--- !u!114 &1190272862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190272859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9110c7841a9f46b4183a3091d8f9a90c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLeafNode: 0
+  children:
+  - {fileID: 1304635823}
+  - {fileID: 423342134}
+  - {fileID: 347138843}
+  - {fileID: 1122909404}
+  - {fileID: 511244885}
 --- !u!43 &1199101925
 Mesh:
   m_ObjectHideFlags: 0
@@ -9825,6 +9854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd69cc0f4270a904bbc45bc1d4fc4ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLeafNode: 1
   children: []
   actionNames:
   - on
@@ -10002,6 +10032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9110c7841a9f46b4183a3091d8f9a90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLeafNode: 0
   children:
   - {fileID: 1974333143}
   - {fileID: 1737773678}
@@ -16668,6 +16699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd69cc0f4270a904bbc45bc1d4fc4ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLeafNode: 1
   children: []
   actionNames:
   - on
@@ -17063,6 +17095,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 152729439}
     m_Modifications:
+    - target: {fileID: 601156619546140801, guid: 7ee333b755cd80244a42a742eeac280e, type: 3}
+      propertyPath: isLeafNode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7119867490834304547, guid: 7ee333b755cd80244a42a742eeac280e, type: 3}
       propertyPath: m_Name
       value: Lamp
@@ -21303,6 +21339,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 152729439}
     m_Modifications:
+    - target: {fileID: 932442554558988839, guid: 25c5077c918fbf94b9fc04a18ef9a165, type: 3}
+      propertyPath: isLeafNode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1143049166217858550, guid: 25c5077c918fbf94b9fc04a18ef9a165, type: 3}
       propertyPath: m_Name
       value: Television
@@ -23152,6 +23192,10 @@ PrefabInstance:
     - target: {fileID: 243049249025791504, guid: 7e518986ad8d344429038b9e90d41bbc, type: 3}
       propertyPath: m_Name
       value: Washer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5704786965204557158, guid: 7e518986ad8d344429038b9e90d41bbc, type: 3}
+      propertyPath: isLeafNode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6125433642826900493, guid: 7e518986ad8d344429038b9e90d41bbc, type: 3}
       propertyPath: m_LocalPosition.x
