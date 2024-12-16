@@ -8,12 +8,12 @@ public class ArcadeIoTActionExecutor : MonoBehaviour
     public void On()
     {
         emmisiveMaterial.EnableKeyword("_EMISSION");
-        noiseableMaterial.SetFloat("IsOn", 1);
+        noiseableMaterial.SetFloat("_IsOn", 1);
     }
     public void Off()
     {
         emmisiveMaterial.DisableKeyword("_EMISSION");
-        noiseableMaterial.SetFloat("IsOn", 0);
+        noiseableMaterial.SetFloat("_IsOn", 0);
     }
 
     public void OnApplicationQuit()

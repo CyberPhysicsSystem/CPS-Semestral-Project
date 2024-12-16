@@ -7235,7 +7235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d6ec88f8a28fc4b4381c87ff3cb6287f, type: 3}
       propertyPath: m_Name
-      value: coocker
+      value: Gas Stove
       objectReference: {fileID: 0}
     - target: {fileID: 1858077740028315276, guid: d6ec88f8a28fc4b4381c87ff3cb6287f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16273,12 +16273,12 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1975728093}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+        m_TargetAssemblyTypeName: ArcadeIoTActionExecutor, Assembly-CSharp
+        m_MethodName: On
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -16286,13 +16286,13 @@ MonoBehaviour:
         m_CallState: 2
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1975728092}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 1975728093}
+        m_TargetAssemblyTypeName: ArcadeIoTActionExecutor, Assembly-CSharp
+        m_MethodName: Off
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -16313,7 +16313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdcd35d54945d946bb213c3b98984d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noiseableMaterial: {fileID: 2100000, guid: c7e0b05196a4de741b2ae6f736b3baec, type: 2}
+  noiseableMaterial: {fileID: 2100000, guid: 18e1c97d2970956439d49accb079e842, type: 2}
   emmisiveMaterial: {fileID: 2100000, guid: 08b43b5b002a36c45bc70234ea845f5a, type: 2}
 --- !u!1 &2039571437
 GameObject:

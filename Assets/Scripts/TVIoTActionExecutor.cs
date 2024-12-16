@@ -5,11 +5,11 @@ public class TVIoTActionExecutor : MonoBehaviour
     public Material noiseableMaterial;
     public void On()
     {
-        noiseableMaterial.SetFloat("IsOn", 1);
+        noiseableMaterial.SetFloat("_IsOn", 1);
     }
     public void Off()
     {
-        noiseableMaterial.SetFloat("IsOn", 0);
+        noiseableMaterial.SetFloat("_IsOn", 0);
     }
 
     public void OnApplicationQuit()

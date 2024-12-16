@@ -26,12 +26,18 @@ public class BaseIoTDevice : MonoBehaviour, IIoTActionProvider, IIoTActionExecut
     [SerializeField] private int debugInvokeIndex = 0;
     [SerializeField] private bool debugInvoke = false;
 
+    private void Awake()
+    {
+        for(int i = 0; i < actionNames.Count; ++i)
+            actionNames[i] = actionNames[i].ToLower();
+    }
+
     /**
      * use if the action name is unsure for this IoT device
      */
     public bool TryDoAction(string actionName)
     {
-        int temp = actionNames.IndexOf(actionName);
+        int temp = actionNames.IndexOf(actionName.ToLower());
         if (temp == -1) return false;
         DoActionInternal(temp);
         return true;
