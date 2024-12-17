@@ -24,13 +24,6 @@ public class MiniLM : MonoBehaviour
 {
     const BackendType backend = BackendType.GPUCompute;
 
-    string string1 = "That is a happy person";          // similarity = 1
-
-    //Choose a string to comapre string1  to:
-    string string2 = "That is a happy dog";             // similarity = 0.695
-    //string string2 = "That is a very happy person";   // similarity = 0.943
-    //string string2 = "Today is a sunny day";          // similarity = 0.257
-
     //Special tokens
     const int START_TOKEN = 101; 
     const int END_TOKEN = 102; 
@@ -42,8 +35,6 @@ public class MiniLM : MonoBehaviour
 
     Worker engine, dotScore;
 
-    Model runtimeModel;
-
     void Start()
     {
         tokens = File.ReadAllLines(Application.streamingAssetsPath + "/vocab.txt");
@@ -51,24 +42,33 @@ public class MiniLM : MonoBehaviour
         engine = CreateMLModel();
 
         dotScore = CreateDotScoreModel();
-
-        var tokens1 = GetTokens(string1);
-        var tokens2 = GetTokens(string2);
-
-        using Tensor<float> embedding1 = GetEmbedding(tokens1);
-        using Tensor<float> embedding2 = GetEmbedding(tokens2);
-
-        float score = GetDotScore(embedding1, embedding2);
-
-        Debug.Log("Similarity Score: " + score);
     }
 
-    float GetDotScore(Tensor<float> A, Tensor<float> B)
+    Worker CreateMLModel()
     {
-        dotScore.Schedule(A, B);
-        var output = dotScore.PeekOutput() as Tensor<float>;
-        var output_cpu = output.ReadbackAndClone();
-        return output_cpu[0];
+        Model model = ModelLoader.Load(Application.streamingAssetsPath + "/MiniLMv6.sentis");
+
+        FunctionalGraph graph = new FunctionalGraph();
+        FunctionalTensor[] inputs = graph.AddInputs(model);
+        FunctionalTensor[] outputs = FF.Forward(model, inputs);
+
+        FunctionalTensor meanPooled = MeanPooling(outputs[0], inputs[1]);
+
+        var modelWithMeanPooling = graph.Compile(meanPooled);
+        return new Worker(modelWithMeanPooling, backend);
+    }
+
+    Worker CreateDotScoreModel()
+    {
+        FunctionalGraph functionalGraph = new FunctionalGraph();
+        FunctionalTensor input1 = functionalGraph.AddInput<float>(new TensorShape(1, FEATURES));
+        FunctionalTensor input2 = functionalGraph.AddInput<float>(new TensorShape(1, FEATURES));
+
+        FunctionalTensor reduce = FF.ReduceSum(input1 * input2, 1);
+
+        Model dotScoreModel = functionalGraph.Compile(reduce);
+
+        return new Worker(dotScoreModel, backend);
     }
 
     Tensor<float> GetEmbedding(List<int> tokens)
@@ -91,20 +91,6 @@ public class MiniLM : MonoBehaviour
         return output as Tensor<float>;
     }
 
-    Worker CreateMLModel()
-    {
-        Model model = ModelLoader.Load(Application.streamingAssetsPath + "/MiniLMv6.sentis");
-
-        FunctionalGraph graph = new FunctionalGraph();
-        FunctionalTensor[] inputs = graph.AddInputs(model);
-        FunctionalTensor[] outputs = Functional.Forward(model, inputs);
-
-        FunctionalTensor meanPooled = MeanPooling(outputs[0], inputs[1]);
-
-        var modelWithMeanPooling = graph.Compile(meanPooled);
-        return new Worker(modelWithMeanPooling, backend);
-    }
-
     //Get average of token embeddings taking into account the attention mask
     FunctionalTensor MeanPooling(FunctionalTensor tokenEmbeddings, FunctionalTensor attentionMask)
     {
@@ -113,19 +99,6 @@ public class MiniLM : MonoBehaviour
         var B = A / (FF.ReduceSum(mask, 1, false) + 1e-9f);                         //shape=(1,FEATURES)
         var C = FF.Sqrt(FF.ReduceSum(FF.Square(B), 1, true));                       //shape=(1,FEATURES)
         return B / C;                                                               //shape=(1,FEATURES)
-    }
-
-    Worker CreateDotScoreModel()
-    {
-        FunctionalGraph functionalGraph = new FunctionalGraph();
-        FunctionalTensor input1 = functionalGraph.AddInput<float>(new TensorShape(1, FEATURES));
-        FunctionalTensor input2 = functionalGraph.AddInput<float>(new TensorShape(1, FEATURES));
-
-        FunctionalTensor reduce = Functional.ReduceSum(input1 * input2, 1);
-
-        Model dotScoreModel = functionalGraph.Compile(reduce);
-
-        return new Worker(dotScoreModel, backend);
     }
 
     List<int> GetTokens(string text)
@@ -163,6 +136,49 @@ public class MiniLM : MonoBehaviour
         Debug.Log("Tokenized sentece = " + s);
 
         return ids;
+    }
+
+    float GetDotScore(Tensor<float> A, Tensor<float> B)
+    {
+        dotScore.Schedule(A, B);
+        var output = dotScore.PeekOutput() as Tensor<float>;
+        var output_cpu = output.ReadbackAndClone();
+        return output_cpu[0];
+    }
+
+    public string GetMostRelevant(string query, List<string> candidates)
+    {
+        List<int> query_t = GetTokens(query);
+        List<List<int>> queries_c = new List<List<int>>();
+        foreach(string s in candidates)
+            queries_c.Add(GetTokens(s));
+
+        Tensor<float> embed_t = GetEmbedding(query_t);
+        List<Tensor<float>> embeds_c = new List<Tensor<float>>();
+        foreach (List<int> q_c in queries_c)
+            embeds_c.Add(GetEmbedding(q_c));
+
+        List<float> res = new List<float>();
+        foreach(Tensor<float> e_c in embeds_c)
+            res.Add(GetDotScore(embed_t, e_c));
+
+        embed_t.Dispose();
+        for (int i = 0; i < embeds_c.Count; ++i)
+            embeds_c[i].Dispose();
+        embeds_c.Clear();
+
+        float b = float.NegativeInfinity;
+        int t = 0;
+        for(int i = 0; i < res.Count; ++i)
+        {
+            if (res[i] > b)
+            {
+                b = res[i];
+                t = i;
+            }
+        }
+
+        return candidates[t];
     }
 
     private void OnDestroy()
