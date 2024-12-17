@@ -8,7 +8,7 @@ public class DummyQueryFeeder : MonoBehaviour
 
     private void Awake()
     {
-        if (igs == null) igs = GetComponent<IoTGraphSearcher>();
+        if (!igs) igs = GetComponent<IoTGraphSearcher>();
     }
 
     private void Update()

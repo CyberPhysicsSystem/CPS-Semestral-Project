@@ -740,58 +740,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLeafNode: 0
+  parent: {fileID: 0}
   children: []
---- !u!1 &380806907
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 380806909}
-  - component: {fileID: 380806908}
-  m_Layer: 0
-  m_Name: test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &380806908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 380806907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf4118d1ef43df84e94bff9a721242f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modelAsset: {fileID: 5022602860645237092, guid: 76c4490411fc273438296377327ef22b, type: 3}
-  TestStringToTokenize:
-  - some i dont know script
-  - whatever
-  TestStringScore:
-  - 0
-  - 0
---- !u!4 &380806909
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 380806907}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.679367, y: 5.7545204, z: 5.796102}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &419013110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,6 +973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLeafNode: 0
+  parent: {fileID: 0}
   children:
   - {fileID: 1975728092}
   - {fileID: 1301379905}
@@ -1341,6 +1292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLeafNode: 0
+  parent: {fileID: 0}
   children:
   - {fileID: 1112626267}
 --- !u!1001 &816537852
@@ -2414,6 +2366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLeafNode: 0
+  parent: {fileID: 0}
   children: []
 --- !u!4 &1164073866 stripped
 Transform:
@@ -2474,9 +2427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   root: {fileID: 1190272862}
   mlm: {fileID: 1190272863}
-  dummyIoTNames:
-  - Livingroom_TV
-  - Washroom_Washer
+  IoTNames: []
   dummyIoTActions:
   - on
   - off
@@ -2493,6 +2444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLeafNode: 0
+  parent: {fileID: 0}
   children:
   - {fileID: 1304635823}
   - {fileID: 423342134}
@@ -4697,6 +4649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLeafNode: 0
+  parent: {fileID: 0}
   children:
   - {fileID: 1737773682}
   - {fileID: 1974333143}
@@ -16822,4 +16775,3 @@ SceneRoots:
   - {fileID: 510968577}
   - {fileID: 816537852}
   - {fileID: 972418096}
-  - {fileID: 380806909}
