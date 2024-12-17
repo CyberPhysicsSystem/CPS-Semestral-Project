@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
+using UnityEditor.Search;
 
 public class IoTGraphSearcher : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class IoTGraphSearcher : MonoBehaviour
     public IoTDeviceHandler dhr;
     public MiniLM mlm;
     public List<string> IoTNames;
-    public List<string> dummyIoTActions;
+    public List<string> IoTActions;
 
     void Awake()
     {
@@ -40,9 +42,10 @@ public class IoTGraphSearcher : MonoBehaviour
     {
         var device = GetBestNode(query, IoTNames);
         Debug.Log(device.GetChainName());
-        dummyIoTActions.Clear();
-        dummyIoTActions.AddRange((device as BaseIoTDevice).GetActionList());
-        var action = mlm.GetMostRelevant(query, dummyIoTActions);
+        IoTActions.Clear();
+        IoTActions.AddRange((device as BaseIoTDevice).GetActionList());
+        query = query[..(query.Length/2)]; //focus on action command
+        var action = mlm.GetMostRelevant(query, IoTActions);
         Debug.Log(action);
         dhr.ChangeActiveDeviceTo(device as BaseIoTDevice);
         dhr.SendActionToActiveDevice(action);

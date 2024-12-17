@@ -189,5 +189,4 @@ public class MiniLM : MonoBehaviour
         dotScore?.Dispose();
         engine?.Dispose();
     }
-
 }
