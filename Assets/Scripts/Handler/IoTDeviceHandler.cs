@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-using static UnityEngine.GraphicsBuffer;
+using System.Linq;
 
 public class IoTDeviceHandler : MonoBehaviour
 {
@@ -35,6 +35,12 @@ public class IoTDeviceHandler : MonoBehaviour
     public void OnDropdownValueChanged(int i)
     {
         activeDevice = i;
+        OnExternalChange();
+    }
+
+    public void ChangeActiveDeviceTo(BaseIoTDevice device)
+    {
+        activeDevice = devices.ToList().IndexOf(device);
         OnExternalChange();
     }
 

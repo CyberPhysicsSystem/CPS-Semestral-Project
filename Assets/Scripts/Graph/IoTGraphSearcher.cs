@@ -5,6 +5,7 @@ using System.Linq;
 public class IoTGraphSearcher : MonoBehaviour
 {
     public IoTGraphNode root;
+    public IoTDeviceHandler dhr;
     public MiniLM mlm;
     public List<string> IoTNames;
     public List<string> dummyIoTActions;
@@ -37,8 +38,14 @@ public class IoTGraphSearcher : MonoBehaviour
      */
     public void Query(string query)
     {
-        Debug.Log(GetBestNode(query, IoTNames).GetChainName());
-        Debug.Log(mlm.GetMostRelevant(query, dummyIoTActions));
+        var device = GetBestNode(query, IoTNames);
+        Debug.Log(device.GetChainName());
+        dummyIoTActions.Clear();
+        dummyIoTActions.AddRange((device as BaseIoTDevice).GetActionList());
+        var action = mlm.GetMostRelevant(query, dummyIoTActions);
+        Debug.Log(action);
+        dhr.ChangeActiveDeviceTo(device as BaseIoTDevice);
+        dhr.SendActionToActiveDevice(action);
     }
 
     IoTGraphNode GetBestNode(string query, List<string> IoTNames)

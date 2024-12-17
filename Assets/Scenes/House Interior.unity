@@ -2426,11 +2426,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 1190272862}
+  dhr: {fileID: 18497295}
   mlm: {fileID: 1190272863}
   IoTNames: []
-  dummyIoTActions:
-  - on
-  - off
+  dummyIoTActions: []
 --- !u!114 &1190272862
 MonoBehaviour:
   m_ObjectHideFlags: 0

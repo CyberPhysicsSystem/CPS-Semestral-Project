@@ -160,7 +160,10 @@ public class MiniLM : MonoBehaviour
 
         List<float> res = new List<float>();
         foreach(Tensor<float> e_c in embeds_c)
+        {
             res.Add(GetDotScore(embed_t, e_c));
+            e_c.Dispose();
+        }
 
         embed_t.Dispose();
         for (int i = 0; i < embeds_c.Count; ++i)
