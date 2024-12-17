@@ -20,8 +20,8 @@ public class WindowIoTActionExecutor : MonoBehaviour
     {
         L_StartRotation = LWindow.localRotation;
         R_StartRotation = RWindow.localRotation;
-        L_EndRotation = L_StartRotation * Quaternion.Euler(0, maxOpenAmount, 0);
-        R_EndRotation = R_StartRotation * Quaternion.Euler(0, -maxOpenAmount, 0);
+        L_EndRotation = L_InitialRotation * Quaternion.Euler(0, maxOpenAmount, 0);
+        R_EndRotation = R_InitialRotation * Quaternion.Euler(0, -maxOpenAmount, 0);
         current = 0;
     }
     public void Close()

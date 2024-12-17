@@ -10,6 +10,8 @@ using UnityEditor.Search;
 
 public class RunWhisper : MonoBehaviour
 {
+    public BackendType backend = BackendType.GPUCompute;
+
     Worker decoder1, decoder2, encoder, spectrogram;
     Worker argmax;
 
@@ -227,6 +229,8 @@ public class RunWhisper : MonoBehaviour
     {
         encodedAudio?.Dispose();
         audioInput?.Dispose();
+        if(lastToken != null)
+            lastToken.Dispose();
         lastTokenTensor?.Dispose();
         tokensTensor?.Dispose();
         outputString = "";
@@ -237,22 +241,22 @@ public class RunWhisper : MonoBehaviour
         SetupWhiteSpaceShifts();
         GetTokens();
 
-        // decoder1 = new Worker(ModelLoader.Load(audioDecoder1), BackendType.GPUCompute);
-        // decoder2 = new Worker(ModelLoader.Load(audioDecoder2), BackendType.GPUCompute);
+        // decoder1 = new Worker(ModelLoader.Load(audioDecoder1), backend);
+        // decoder2 = new Worker(ModelLoader.Load(audioDecoder2), backend);
 
-        decoder1 = new Worker(ModelLoader.Load(Application.streamingAssetsPath + "/decoder_model.sentis"), BackendType.GPUCompute);
-        decoder2 = new Worker(ModelLoader.Load(Application.streamingAssetsPath + "/decoder_with_past_model.sentis"), BackendType.GPUCompute);
+        decoder1 = new Worker(ModelLoader.Load(Application.streamingAssetsPath + "/decoder_model.sentis"), backend);
+        decoder2 = new Worker(ModelLoader.Load(Application.streamingAssetsPath + "/decoder_with_past_model.sentis"), backend);
 
         FunctionalGraph graph = new FunctionalGraph();
         var input = graph.AddInput(DataType.Float, new DynamicTensorShape(1, 1, 51865));
         var amax = Functional.ArgMax(input, -1, false);
         var selectTokenModel = graph.Compile(amax);
-        argmax = new Worker(selectTokenModel, BackendType.GPUCompute);
+        argmax = new Worker(selectTokenModel, backend);
 
-        // encoder = new Worker(ModelLoader.Load(audioEncoder), BackendType.GPUCompute);
-        // spectrogram = new Worker(ModelLoader.Load(logMelSpectro), BackendType.GPUCompute);
-        encoder = new Worker(ModelLoader.Load(Application.streamingAssetsPath + "/encoder_model.sentis"), BackendType.GPUCompute);
-        spectrogram = new Worker(ModelLoader.Load(Application.streamingAssetsPath + "/logmel_spectrogram.sentis"), BackendType.GPUCompute);
+        // encoder = new Worker(ModelLoader.Load(audioEncoder), backend);
+        // spectrogram = new Worker(ModelLoader.Load(logMelSpectro), backend);
+        encoder = new Worker(ModelLoader.Load(Application.streamingAssetsPath + "/encoder_model.sentis"), backend);
+        spectrogram = new Worker(ModelLoader.Load(Application.streamingAssetsPath + "/logmel_spectrogram.sentis"), backend);
     }
 
     private async void Transcribe()
@@ -274,7 +278,8 @@ public class RunWhisper : MonoBehaviour
         tokensTensor.Reshape(new TensorShape(1, tokenCount));
         tokensTensor.dataOnBackend.Upload<int>(outputTokens, tokenCount);
 
-        lastToken = new NativeArray<int>(1, Allocator.Persistent); lastToken[0] = NO_TIME_STAMPS;
+        lastToken = new NativeArray<int>(1, Allocator.Persistent);
+        lastToken[0] = NO_TIME_STAMPS;
         lastTokenTensor = new Tensor<int>(new TensorShape(1, 1), new[] { NO_TIME_STAMPS });
 
         while (true)

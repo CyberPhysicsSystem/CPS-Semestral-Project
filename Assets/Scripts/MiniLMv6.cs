@@ -22,7 +22,7 @@ using FF = Unity.Sentis.Functional;
 
 public class MiniLM : MonoBehaviour
 {
-    const BackendType backend = BackendType.GPUCompute;
+    public BackendType backend = BackendType.GPUCompute;
 
     //Special tokens
     const int START_TOKEN = 101; 

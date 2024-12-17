@@ -12,7 +12,7 @@ using static Unity.Sentis.Model;
 
 public class AudioResample : MonoBehaviour
 {
-    const BackendType backend = BackendType.GPUCompute;
+    public BackendType backend = BackendType.GPUCompute;
 
     //Place the audio clip to resample here
     public AudioClip inputAudio;
@@ -31,10 +31,10 @@ public class AudioResample : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
-        {
-            ConvertAudio();
-        }
+        //if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    ConvertAudio();
+        //}
     }
 
     void ConvertAudio()

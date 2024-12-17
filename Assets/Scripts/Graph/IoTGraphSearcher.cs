@@ -44,7 +44,7 @@ public class IoTGraphSearcher : MonoBehaviour
         Debug.Log(device.GetChainName());
         IoTActions.Clear();
         IoTActions.AddRange((device as BaseIoTDevice).GetActionList());
-        query = query[..(query.Length/2)]; //focus on action command
+        //query = query[..(query.Length/2)]; //focus on action command
         var action = mlm.GetMostRelevant(query, IoTActions);
         Debug.Log(action);
         dhr.ChangeActiveDeviceTo(device as BaseIoTDevice);
