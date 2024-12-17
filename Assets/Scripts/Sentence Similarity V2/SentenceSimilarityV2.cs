@@ -1,10 +1,10 @@
-using UnityEngine;
-using Unity.Sentis;
-using System.Collections.Generic;
-
 namespace SentenceSimilarityV2
 {
+    using UnityEngine;
+    using Unity.Sentis;
+    using System.Collections.Generic;
     using SSU = SentenceSimilarity.SentenceSimilarityUtils.SentenceSimilarityUtils_;
+
     public class SentenceSimilarityV2 : MonoBehaviour
     {
         public ModelAsset modelAsset;
