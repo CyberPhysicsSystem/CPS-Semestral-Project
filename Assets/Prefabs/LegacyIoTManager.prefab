@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1540001343194218266}
   - component: {fileID: 5794872404587713045}
   - component: {fileID: 3954575025119551265}
-  - component: {fileID: 8479130070753732037}
   m_Layer: 0
   m_Name: LegacyIoTManager
   m_TagString: Untagged
@@ -43,7 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6615707233592073969}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcd15847fa84bf445bac50b2d9832e35, type: 3}
+  m_Script: {fileID: 11500000, guid: f556464f2523a98478f481d54349ced9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   matcher: {fileID: 3954575025119551265}
@@ -59,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03d4325f29c6c349bd64e54d83e6ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IoTDeviceHandler: {fileID: 8479130070753732037}
+  IoTDeviceHandler: {fileID: 0}
   FromGenericActionKeys:
   - hand wave
   - drink
@@ -70,18 +69,3 @@ MonoBehaviour:
   - labels:
     - close
     - off
---- !u!114 &8479130070753732037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6615707233592073969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8c002d078ac18c41b4fbb2becad88c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  devices: []
-  activeDevice: 0
-  dropdown: {fileID: 0}

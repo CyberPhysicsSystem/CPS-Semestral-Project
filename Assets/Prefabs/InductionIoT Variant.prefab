@@ -338,6 +338,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 812851853708940320, guid: b7d3034990d45e44ebb0978114aab4df, type: 3}
+      propertyPath: actionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 812851853708940320, guid: b7d3034990d45e44ebb0978114aab4df, type: 3}
+      propertyPath: actionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 992479791419727077, guid: b7d3034990d45e44ebb0978114aab4df, type: 3}
       propertyPath: m_Name
       value: InductionIoT Variant
@@ -346,6 +354,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2715434183370692665, guid: b7d3034990d45e44ebb0978114aab4df, type: 3}
+      propertyPath: IoTDeviceToLook
+      value: 
+      objectReference: {fileID: 5343758426820007317}
     - target: {fileID: 3084721283501373958, guid: b7d3034990d45e44ebb0978114aab4df, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -458,8 +470,11 @@ PrefabInstance:
       propertyPath: actionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 6718971044038107486, guid: b7d3034990d45e44ebb0978114aab4df, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 6149504069516739584, guid: b7d3034990d45e44ebb0978114aab4df, type: 3}
+    - {fileID: 6943273731715042651, guid: b7d3034990d45e44ebb0978114aab4df, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3084721283501373958, guid: b7d3034990d45e44ebb0978114aab4df, type: 3}
       insertIndex: -1
@@ -469,6 +484,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 774546937094979976}
   m_SourcePrefab: {fileID: 100100000, guid: b7d3034990d45e44ebb0978114aab4df, type: 3}
+--- !u!114 &5343758426820007317 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 812851853708940320, guid: b7d3034990d45e44ebb0978114aab4df, type: 3}
+  m_PrefabInstance: {fileID: 4714991244496699829}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5524505600695606608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd69cc0f4270a904bbc45bc1d4fc4ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5524505600695606608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 992479791419727077, guid: b7d3034990d45e44ebb0978114aab4df, type: 3}
@@ -483,12 +509,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5524505600695606608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9f5503f5a5b2ec448f91248e46ca300, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d800f6f20477184c86dcb63fa23556e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emmisiveMaterial: {fileID: 2100000, guid: 944be3ca2848c704d96e190e958877da, type: 2}
-  preHeatColor: {r: 0, g: 0, b: 0, a: 1}
-  postHeatColor: {r: 0.18039216, g: 0, b: 0, a: 1}
+  emmisiveMaterial: {fileID: 0}
+  preHeatColor: {r: 0, g: 0, b: 0, a: 0}
+  postHeatColor: {r: 0.4433962, g: 0, b: 0, a: 0}
   fromColor: {r: 0, g: 0, b: 0, a: 0}
   toColor: {r: 0, g: 0, b: 0, a: 0}
   duration: 1
@@ -507,8 +533,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
