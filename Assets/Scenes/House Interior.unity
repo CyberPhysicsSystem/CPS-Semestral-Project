@@ -2689,11 +2689,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1190272859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13ba4e598face5741add99d58e629f1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1280d0fe883fc9b4b98ece4045c2b7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   igs: {fileID: 1190272861}
-  dummyQuery: Turn on the TV at the living room.
+  dummyQuery: 
   trigger: 0
 --- !u!43 &1199101925
 Mesh:
